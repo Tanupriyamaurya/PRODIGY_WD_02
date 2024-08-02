@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StopWatch
+        </title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        </head><body><div class="stopwatch">
+        <h1 id="displayTime">00<span>h</span>:00<span>m</span>:00<span>s</span></h1>
+        <div class="buttons">
+            <img src="download (1).jfif" >
+            <img  src="download.jfif"  onclick="watchstart()">
+            <img src="download (2).jfif" onclick="reset()">
+        </div>
+</div><!--
+    <script>
+        var isStop=true;
+        let[seconds,minutes,hours]=[0,0,0];
+        
+        function start(){
+            console.log("start");
+            if(isStop==true){
+                isStop==false;
+                    timer();
+                
+            }
+        }
+        function timer(){
+            if(isStop==false){
+                seconds++;
+                let displayTime=document.getElementById("dispayTime");
+                setInterval("timer()",1000);
+            }
+        }
+        function stop(){
+            isStop=true;
+
+        }
+    </script>--><script>
+    let[seconds,minutes,hours]=[0,0,0];
+    
+    let displayTime=document.getElementById("displayTime");
+    let timer=null;
+    let isStop=true;
+    function stopwatch(){
+        if(isStop=true){
+            isStop=false;
+        seconds++;
+        if(seconds==60){
+            seconds=0;
+            minutes++;
+        if(minutes==60){
+            minutes=0;
+            hours++;
+        }    
+    }
+    if(seconds<10){
+        seconds="0"+seconds;
+    }
+   if(minutes<10){
+    minutes=parseInt(minutes);
+        minutes="0"+minutes;
+    }
+    if(hours<10){
+        hours=parseInt(hours);
+        hours="0"+hours;
+    }
+    displayTime.innerHTML=hours+":"+ minutes+":"+seconds;
+}}
+function watchstart(){
+    if(timer!==null){
+        clearInterval(timer);
+    }
+   timer= setInterval(stopwatch,1000);
+}
+function stop(){
+    isStop=true;
+    clearTimeout();
+}
+function reset(){
+    isStop=true;
+    seconds=0;
+    minutes=0;
+    hours=0;
+  displayTime.innerhtml="00:00:00";
+}
+</script>
+
+</body>
+</html>
